@@ -4,9 +4,9 @@ void setup() {
 }
 
 int total = width * height;
-float y = 35;
+float y = 15;
 
-float x = 10;
+float x = 1;
 
 
 void draw() {
@@ -19,60 +19,43 @@ void draw() {
  
   
   translate(width/2, height/2);
-     //scale(0.5);
+      //  scale(.);
 
        
        
     for (float j = 1; j < width; j = j+1) {
-        x += .0001;
+        x += .00001;
 
-        color a = color(-x ,0,0);
-        
+        color a = color(200 ,10, 255);
+        color b = color(j ,0,-j + x);
+
         //strokeWeight(4);
 
       
         y += 0.00001;
-       // scale(x);
-        print(x + "  ");
 
-        
-        
-        
         pushMatrix();
-
-        stroke(a/20);
-        //noStroke();
-
-        fill(a);
-
-        rotate(radians(y));
+        noStroke();
+        fill(255,0,0);
+        //rotate(radians(y));
         circle(j, j, j);
         popMatrix();
         
         pushMatrix();
-                        tint(0, 0);
-
-        stroke(0,0,255);
-        //noStroke();
-        fill(a/20);
-        rotate(radians(y));
-        circle(-j, -j, j);
+        //stroke(0,0,255);
+       // noStroke();
+        fill(0);
+       // rotate(radians(-y));
+        circle(-j, -j,-j);
         popMatrix();
         
-        rotate(radians(y));
+       rotate(radians(y));
         //noFill();
       
      
       }
-     
-  
 
-
-    
-    
-      
-    
-  saveFrame("spiral_68");
+  saveFrame("spiral_76");
 }
 
 
