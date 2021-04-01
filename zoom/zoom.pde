@@ -14,7 +14,7 @@ void draw() {
   //color n = get(mouseX, mouseY);
   
   int x = 10;
- // square(100,100, 100);
+ // square(1 00,100, 100);
   
   
   if (keyPressed) {
