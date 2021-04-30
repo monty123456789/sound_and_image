@@ -1,38 +1,41 @@
-PImage pic;
-
+PImage me;
 
 void setup() {
-   size(549, 312, P2D);
+  size(540, 260);
   background(0);
-  pic = loadImage("cat.jpg");
 }
 
 void draw() {
-  background(pic);
-  stroke(0);
-  strokeWeight(10);
-  //color n = get(mouseX, mouseY);
-  
-  int x = 10;
- // square(1 00,100, 100);
-  
-  
-  if (keyPressed) {
-    if(key == 'a') {
-      x+=1;
+  me = loadImage("cat.jpg");
+ // translate(width, 0);
+ // scale(0.25);
+ // rotate(radians(90));
+ 
+ image(me, 0, 0);
+          int s = 10;
+
+    loadPixels();
+    for (int i = 1; i <s; i++) {
+      //color c = get(mouseX , mouseY);
+      //println(c);
+      //fill(b);
+      for (int j = 1; j < s; j++) {
+        color b = get(mouseX +j, mouseY + i);
+        
+        
+      noStroke();
+            fill(b);
+
+      square(mouseX + j*s, mouseY +i*s, s);
+     // square(10*i, 10, 10);
+      //square(10,20,10);
+      }
+   // c[i] = mouseY;
+     
     }
-    if(key == 's') {
-      x-=1;
-    }
-  }
   
-  PImage ne = get(mouseX,mouseY,100/x,100/x);
- // print(ne);
- // fill(n);
-  //print(n);
+  //fill(c[1]);
   
-  print(x);
-  scale(x);
-  image(ne, mouseX/x, mouseY/x);
-  //rect(25, 25, 50, 50);
+  
+  
 }
