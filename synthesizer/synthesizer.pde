@@ -57,7 +57,7 @@ void draw() {
     vertex(width-panning*50, height);
     endShape();
   }
-  
+  saveFrame("synth_1.jpg");
 
  // line(amplitude);
 }

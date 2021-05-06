@@ -16,9 +16,7 @@ void draw() {
 
     loadPixels();
     for (int i = 1; i <s; i++) {
-      //color c = get(mouseX , mouseY);
-      //println(c);
-      //fill(b);
+      
       for (int j = 1; j < s; j++) {
         color b = get(mouseX +j, mouseY + i);
         
@@ -27,15 +25,14 @@ void draw() {
             fill(b);
 
       square(mouseX + j*s, mouseY +i*s, s);
-     // square(10*i, 10, 10);
-      //square(10,20,10);
+    
       }
-   // c[i] = mouseY;
+      saveFrame("zoom.jpg");
+
      
     }
   
-  //fill(c[1]);
-  
+ 
   
   
 }

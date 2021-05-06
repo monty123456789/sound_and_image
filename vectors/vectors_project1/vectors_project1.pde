@@ -1,59 +1,41 @@
 void setup() {
   size(1920, 1080);
-  //scale(0.05);
 }
 
 int total = width * height;
-float y = 15;
+float y = 035;
 
 float x = 1;
+
+float j;
+color a;
+color b;
+float d;
 //
 
 void draw() {
+   
 
-  //  camera(mouseX, height/2, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 
-  //for (int i = 255; i >= 100; i--) {
-  
+
   background(0);
+
  
-  
-  translate(width/2, height/2);
-      //  scale(.);
+  pushMatrix();
+   
+  translate((width/2)-width/4, height/2);
+  scale(0.15);
+  spiral(y, d);
+  popMatrix();
 
-       
-       
-    for (float j = 1; j < width; j = j+1) {
-        x += .00001;
+  pushMatrix();
+  translate((width/2)+width/4, height/2);
+  scale(0.15);
+  spiral(-y, -d);
+  popMatrix();
 
-        color a = color(200 ,10, 255);
-        color b = color(j ,0,-j + x);
 
-        //strokeWeight(4);
 
-      
-        y += 0.00001;
-
-        pushMatrix();
-        noStroke();
-        fill(255,0,0);
-        //rotate(radians(y));
-        circle(j, j, j);
-        popMatrix();
-        
-        pushMatrix();
-        //stroke(0,0,255);
-       // noStroke();
-        fill(0);
-       // rotate(radians(-y));
-        circle(-j, -j,-j);
-        popMatrix();
-        
-       rotate(radians(y));
-        //noFill();
-      
-     
-      }
 
   saveFrame("spiral_76");
 }
@@ -61,7 +43,26 @@ void draw() {
 
 
 void keyPressed() {
- 
- // x += 0.01;
+
+  // x += 0.01;
   redraw();
 }
+
+void spiral(float rotate, float f) {
+ 
+  for (j = 1; j < width; j = j+1) {
+    x += .00001;
+    d = map(j, 0, width/4, 0, 255);
+
+    y += 0.000001;
+
+    //noStroke();
+    stroke(255-f, .0, f);
+    fill(f, 0, 255-f);
+    circle(j, j, j/10);
+    fill(0);
+    circle(-j, -j, -j/10);     
+    rotate(radians(rotate));
+    println(y);
+  }
+}   
