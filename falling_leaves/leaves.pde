@@ -9,19 +9,19 @@ class Leaves {
   float noiseVal;
   float noiseScale = .02;
 
-  Leaves(float x, float y) {
+  Leaves() {
 
 
-
-    position = new PVector(x, y);
+    float r = random(-50, 50);
+    position = new PVector(r, -10);
     velocity = new PVector(0, 0); 
-    gravity = new PVector(0, .0);
+    gravity = new PVector(0, .20);
     wind = new PVector(0, 0);
     gusts = new PVector(0, offset);
    
 
     life = 800;
-    seed = random(.01);
+    seed = random(.5, 1.5);
   }
 
 
@@ -34,14 +34,13 @@ class Leaves {
 
 
   void update() {
-
+    x += .0001;
     //noiseDetail(1,.9);
-    float noiz = noise(seed+(position.y)*.02);
-    float noiz2 = noise((position.x)*.03);
+    float noiz = noise( (position.y)*.01);
+    float noiz2 = noise((position.x)*.01);
     
-    position.add(noiz, noiz2).add(velocity).add(wind);
-    wind.add(seed, 0);
-    
+    position.add(noiz, noiz2).add(gravity).add(wind).add(seed, 0);
+    //position.sub(0, position.y);
     
     life -= 1;
     x += .005;
@@ -61,8 +60,26 @@ class Leaves {
   
 
   void display() {
-    circle(position.x, position.y, 10);
-    noStroke();
+   
+  // pushMatrix();
+  // fill(255);
+  // ellipse(width/2, height/2, 100, 70);
+  //  fill(0);
+  // circle(width/2, height/2, 60);
+  //fill(255, 0, 0);
+  // circle(width/2, height/2, 20);
+   
+  // popMatrix();
+   
+   //pushMatrix();
+   //fill(255);
+   // ellipse(position.x, position.y, 15, 11);
+   // fill(0);
+   //circle(position.x, position.y, 10);
+   //fill(255, 0, 0);
+   circle(position.x, position.y, 10);
+   //popMatrix();
+    //noStroke();
     //fill(life);
   }
 

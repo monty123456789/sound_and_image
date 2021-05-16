@@ -5,19 +5,23 @@
   int radius = 20;
   float edge;
   PVector d, h;
+  float r; 
+  int x;
 
   void setup() {
-   
     size(600,400);
-   // leaves = new ArrayList<LeavesSystem>();
+    leaves = new ArrayList<LeavesSystem>();
    for (int i = 0; i< 5; i++) {
-      leaves.add(new LeavesSystem(100+10*i, -1));
+      leaves.add(new LeavesSystem(10*i,-2));
   }
   }
   
   void draw() {
+     x +=1;
+   
     
-  
+    
+    println(leaves.size());
   
     background(0);
   
