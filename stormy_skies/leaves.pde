@@ -9,15 +9,14 @@ class Leaves {
   float noiseVal;
   float noiseScale = .02;
 
-  Leaves() {
+  Leaves(float x, float y) {
 
 
     float r = random(-50, 50);
-    position = new PVector(r, -10);
+    position = new PVector(x, y);
     velocity = new PVector(0, 0); 
     gravity = new PVector(0, .70);
     wind = new PVector(0, 0);
-    gusts = new PVector(0, seed);
     lif = new PVector(life/800, 0);
    
 
@@ -40,7 +39,7 @@ class Leaves {
     float noiz = noise( (position.y)*.01);
     float noiz2 = noise((position.x)*.01);
     
-    position.add(noiz, noiz2).add(gravity).add(wind).add(seed, 0).add(lif);
+    //position.add(gravity);
     //position.sub(0, position.y);
     
     life -= 1;
@@ -79,8 +78,8 @@ class Leaves {
    //circle(position.x, position.y, 10);
    //fill(255, 0, 0);
    float c = map(life, 0, 700, 0, 255);
-   fill(c);
-   noStroke();
+   fill(255);
+   //noStroke();
    //fill(255, 255, 0);
    circle(position.x, position.y, 10);
    //popMatrix();
