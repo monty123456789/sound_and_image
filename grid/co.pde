@@ -4,10 +4,10 @@ class Co {
   float noiseV;
   float noiz, noiz2, noiz3, noiz4, noiz2z, noiz3z, x;
   
-  Co(float x, float y, float z) {
+  Co(float x, float y) {
     
    wind = new PVector(10, 1); 
-   position = new PVector(x, y, 0);
+   position = new PVector(x, y);
    mult = new PVector(0,0);
    w = new PVector(width, height);
    w2 = new PVector(0, height);
@@ -38,10 +38,14 @@ class Co {
   
   void run() {
   //  position.add(wind);
-    
-  circle(position.x, position.y, 5);
+    noStroke();
+    fill(255);
+  //circle(position.x, position.y, 3);
     
   }
+  
+ 
+      
   
   void wid() {
     wi = position.dist(w);
@@ -55,7 +59,6 @@ class Co {
     wi/=500;
     position.sub(0, 0);
    // position.add(wi3, wi2);
-    println(wi2);
     //position.sub(wi, wi);
     //position.sub(0, wi2);
     //position.add(wi3, wi3);
@@ -64,11 +67,11 @@ class Co {
   
   void nois() {
     x += .0001;
-    noiz = noise((position.y * .001) +100);
-    noiz2 = noise(position.x * .001);
-     noiz2z = noise(position.z * .001);
+    noiz = noise((position.y * .001) -100);
+    noiz2 = noise((position.x * .001) + 100);
+     //noiz2z = noise(position.z * .001);
     noiz3 = noise(position.y * .005);
-     noiz3 = noise(position.z * .005);
+    // noiz3 = noise(position.z * .005);
     noiz4 = noise(position.x * .005);
     
     position.add(noiz, noiz2);
