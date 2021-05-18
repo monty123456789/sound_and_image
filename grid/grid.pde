@@ -3,7 +3,7 @@ PShape s;
 ArrayList<Co> cos = new ArrayList<Co>();
 IntList ex, ey;
 void setup() {
-  size(720, 480);
+  size(1080, 810);
   shap = new PVector(0,0);
   ex = new IntList();
   ey = new IntList();
@@ -11,7 +11,7 @@ void setup() {
   for(int i = 0; i< width; i+=5) {
     ex.append(i);
     for (int j = 0; j < height; j+=20) {
-      cos.add(new Co(i, j));
+      cos.add(new Co(i, j,0));
       ey.append(j);
       
   }
@@ -21,27 +21,32 @@ void setup() {
 }
 
 void draw() {
-    //spotLight(255, 255, 255, 0, 0, 1000, 0, 0, -1, PI/4, 2);
-    //camera(mouseX, height/2, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
-  background(0);
+//spotLight(255, 0, 0, 0, 0, 400, 0, 0, -1, PI, 0);
+background(0);
  
       for(int i = 0; i< cos.size()-1; i++) {
         Co n = cos.get(i);
         Co m = cos.get(i+1);
         n.update();
         float ax = 1;
-   
+         ax+= 1;
+         println(ax);
 
-    println(m);
+    //println(cos.size());
     
      
     
         //position.add(wind);
         //circle(position.x, position.y, 10);
        }
+       saveFrame("grid1_####.jpg");
+       
     }
   
-  
+//void fil() {
+//    float f = position.dist(m);
+//    float c = map(noiz3, 0, .5, 0, 255);
+//  }  
  
 void lines() {
       int ad = 40;
@@ -61,3 +66,12 @@ void lines() {
     // line(m.position.x,m.position.y, n.position.x, n.position.y);
     // line(m.position.x,m.position.y, n.position.x, n.position.y);
    }
+
+
+  void keyPressed() {
+    
+      if(key =='r') {
+        setup();
+      }
+    
+  }

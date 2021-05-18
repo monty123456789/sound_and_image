@@ -2,12 +2,12 @@ class Co {
   PVector wind, position, co, w, w2, w3, w4, mult; 
      float wi, wi2, wi3, wi4;
   float noiseV;
-  float noiz, noiz2, noiz3, noiz4, x;
+  float noiz, noiz2, noiz3, noiz4, noiz2z, noiz3z, x;
   
-  Co(float x, float y) {
+  Co(float x, float y, float z) {
     
-   wind = new PVector(1, 1); 
-   position = new PVector(x, y);
+   wind = new PVector(10, 1); 
+   position = new PVector(x, y, 0);
    mult = new PVector(0,0);
    w = new PVector(width, height);
    w2 = new PVector(0, height);
@@ -16,11 +16,14 @@ class Co {
   }
   
   void update() {
+    // edge();
     run();
     wid();
     nois();
    // leftright();
-    edge();
+   //threed();
+   
+
   }
   
   void threed() {
@@ -46,27 +49,31 @@ class Co {
     wi3 = position.dist(w3);
     wi3 = position.dist(w3);
     
-    wi3/=500;
+    wi3/=250;
     wi4/=500;
-    wi2/=500;
+    wi2/=250;
     wi/=500;
-    
+    position.sub(0, 0);
+   // position.add(wi3, wi2);
+    println(wi2);
     //position.sub(wi, wi);
-    //position.sub(wi2, wi2);
+    //position.sub(0, wi2);
     //position.add(wi3, wi3);
     //position.add(wi4, wi4);
   }
   
   void nois() {
-    x += .01;
-    noiz = noise(position.y * .01);
-    noiz2 = noise(position.x * .01);
-    noiz3 = noise(position.y * .02);
-    noiz4 = noise(position.x * .02);
+    x += .0001;
+    noiz = noise((position.y * .001) +100);
+    noiz2 = noise(position.x * .001);
+     noiz2z = noise(position.z * .001);
+    noiz3 = noise(position.y * .005);
+     noiz3 = noise(position.z * .005);
+    noiz4 = noise(position.x * .005);
     
     position.add(noiz, noiz2);
-    position.add(wind);
-   // position.sub(noiz*x, noiz2*x);
+    //position.add(wind);
+    position.sub(noiz3, noiz4);
   }
   
   void edge() {
@@ -81,6 +88,7 @@ class Co {
     
   }
   
+  
   void leftright() {
     for (int i = 0; i< 1200; i++) {
       if (i< 600) {
@@ -90,4 +98,7 @@ class Co {
       }
     }
   }
+  
+
+    
 }
