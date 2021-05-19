@@ -147,7 +147,7 @@ void lines() {
 
 //  s = createShape();
 //  s.beginShape();
-//  s.vertex(x, y);
+//  s.vertex(x, y);git ss
 //  s.vertex(x, y);
 //  s.endShape();
 //  shape(s, 25, 25);

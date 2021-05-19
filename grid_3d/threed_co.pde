@@ -78,7 +78,7 @@ class Co {
     noiz4 = noise(position.x * .005);
     position.add(noiz, noiz2,noiz4);
    // position.add(wind);
-   // position.sub(noiz3, noiz4);
+   // position.sub(noiz3, noiz4);ss
   }
   
   void edge() {
