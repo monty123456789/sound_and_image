@@ -4,36 +4,38 @@ ArrayList<Co> cos = new ArrayList<Co>();
  ArrayList<Co> cos2 = new ArrayList<Co>();
 //IntList ex, ey;
 int ax;
-float x, y,x2, y2;
+float x, y, z, x2, y2, z2;
 PShape s;
 float ad = 20;
 void setup() {
-  size(1440, 1080);
+  size(1080, 810, P3D);
  //s = (1,0);
   //shap = new PVector(0, 0);
   //ex = new IntList();
   //ey = new IntList();
 
   //for vertex/circles i = 0, for lines i = 10
-  for (int i = 0; i< width; i+=1) {
+  for (int i = 0; i< width; i+=15) {
     //ex.append(i);
-    for (int j = 0; j < height; j+=10) {
+    for (int j = 0; j < height; j+=15) {
+      //for (int k = 0; k < 100; k +=1) {
       //creating new circle objects with coordinates of i and j, adding these objects to array list. 
-      cos.add(new Co(i, j));
+        cos.add(new Co(i, j, 0));
      // cos.add(new Co(j, i));
       
       //cos2.add(new Co(i, j));
      // cos2.add(new Co(j, i));
-    }
     
+    }
   }
 }
 
 void draw() {
-  //spotLight(255, 0, 0, 0, 0, 400, 0, 0, -1, PI, 0);
+  spotLight(255, 255, 255, 0, 0, 400, 0, 0, -1, PI, 0);
+   camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
   background(0);
   ax+= 1;
-  println(ax);
+  //println(ax);
 
    //extracting objects from arrayList, and adding them to the draw loop so they update. 
   for (int i = cos.size()-1; i > 0; i--) {
@@ -49,24 +51,26 @@ void draw() {
     
      x = m.position.x;
      y = m.position.y;
+     z = m.position.y;
+     println(z);
    
       x2 = n.position.x;
       y2 = n.position.y;
+      z2 = n.position.z;
   
-     
-      stroke(255);
-     // circles(3);
+    
+    float c = map(z, 0, 1000, 0, 255);
+    fill(c);
+     stroke(255);
       //strokeWeight(2);
      //lines();
-     //tex();
+    // lines();
+    lines();
     
   }
 
  
-   //float d = m.position.dist(initial);
-   // println(d);
-   // float c = map(d, 0, 1000, 0, 255);
-   // stroke(c);
+   
   saveFrame("grid1_####.jpg");
 }
 
@@ -75,11 +79,11 @@ void tex() {
     pushMatrix();
   beginShape();
   
-  translate(y, y);
+  translate(x, y, z);
  // vertex(x, y);
 //  vertex(x, y);
 
-  vertex(0,0);
+  vertex(0,0,0);
 
   endShape();
   popMatrix();
@@ -94,13 +98,13 @@ void lines() {
   }
 
  // shape(s);
-   line(x2,y2, x, y);
+  
+   line(x,y, z, x2, y2, z2);
+    //line(x2,y2, z2, x, y, z);
   // line(y,x, y, x);
    }  
 
-void circles(int n) {
-  circle(x, y, n);
-}
+
 
 
 

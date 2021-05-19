@@ -2,13 +2,12 @@ class Co {
   PVector wind, position, co, w, w2, w3, w4, mult; 
      float wi, wi2, wi3, wi4;
   float noiseV;
-  float noiz, noiz2, noiz3, noiz4, noiz2z, noiz3z;
-  float x = .0001;
+  float noiz, noiz2, noiz3, noiz4, noiz2z, noiz3z, x;
   
-  Co(float x, float y) {
+  Co(float x, float y, float z) {
     
    //wind = new PVector(100, 1); 
-   position = new PVector(x, y);
+   position = new PVector(x, y, z);
    //mult = new PVector(0,0);
    //w = new PVector(width, height);
    //w2 = new PVector(0, height);
@@ -17,12 +16,12 @@ class Co {
   }
   
   void update() {
-     //edge();
+     edge();
     run();
     //wid();
     nois();
    // leftright();
-   //threed();
+  // threed();
    
 
   }
@@ -30,7 +29,7 @@ class Co {
   void threed() {
      pushMatrix();
      fill(255);
-     translate(position.x, position.y);
+     translate(position.x, position.y, position.z);
      sphere(5);
      noStroke();
       fill(255);
@@ -42,7 +41,8 @@ class Co {
     noStroke();
     fill(255);
    //circle(100,100,100);
-  circle(position.x, position.y, 2);
+  //circle(position.x, position.y, 2);
+ // circle(position.y, position.x, 2);
     
   }
   
@@ -68,18 +68,17 @@ class Co {
   }
   
   void nois() {
-    x += .00001;
-   // println(x);
-    noiz = noise((position.y * .001)+200);
-    noiz2 = noise((position.x * .005)+100 );
-     //noiz2z = noise(position.z * .001);
+    x += .0001;
+    noiz = noise((position.y * .001) -100);
+    noiz2 = noise((position.x * .001) + 100);
+   
+     noiz2z = noise(position.y * .001);
     noiz3 = noise(position.y * .005);
     // noiz3 = noise(position.z * .005);
-    noiz4 = noise(position.x * .001);
-    
-    position.add(noiz, noiz2);
+    noiz4 = noise(position.x * .005);
+    position.add(noiz, noiz2,noiz4);
    // position.add(wind);
-    position.sub(noiz3, noiz4);
+   // position.sub(noiz3, noiz4);
   }
   
   void edge() {
@@ -89,11 +88,6 @@ class Co {
       // position.sub(mult);
     } else if (position.x > width) {
        position.sub(width, 0);     
-    } else if (position.y < 0) {
-      position.add(0, height);
-      // position.sub(mult);
-    } else if (position.x < 0) {
-       position.add(width, 0);     
     } 
     
     
