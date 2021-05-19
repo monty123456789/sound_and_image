@@ -6,19 +6,19 @@ class Co {
   
   Co(float x, float y) {
     
-   wind = new PVector(100, 1); 
+   //wind = new PVector(100, 1); 
    position = new PVector(x, y);
-   mult = new PVector(0,0);
-   w = new PVector(width, height);
-   w2 = new PVector(0, height);
-   w3 = new PVector(width, 0);
-   w4 = new PVector(0, 0);
+   //mult = new PVector(0,0);
+   //w = new PVector(width, height);
+   //w2 = new PVector(0, height);
+   //w3 = new PVector(width, 0);
+   //w4 = new PVector(0, 0);
   }
   
   void update() {
     // edge();
     run();
-    wid();
+    //wid();
     nois();
    // leftright();
    //threed();
