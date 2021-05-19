@@ -8,7 +8,7 @@ class Co {
     
    //wind = new PVector(100, 1); 
    position = new PVector(x, y, z);
-   //mult = new PVector(0,0);
+   //mult = new PVector(0,0);s
    //w = new PVector(width, height);
    //w2 = new PVector(0, height);
    //w3 = new PVector(width, 0);

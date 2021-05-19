@@ -2,7 +2,7 @@ PVector wind,  position, co, shap, initial, current;
 ////PShape s;
 ArrayList<Co> cos = new ArrayList<Co>();
  ArrayList<Co> cos2 = new ArrayList<Co>();
-//IntList ex, ey;
+//IntList ex, ey;s
 int ax;
 float x, y, z, x2, y2, z2;
 PShape s;
