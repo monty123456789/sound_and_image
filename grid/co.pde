@@ -6,7 +6,7 @@ class Co {
   
   Co(float x, float y) {
     
-   wind = new PVector(10, 1); 
+   wind = new PVector(100, 1); 
    position = new PVector(x, y);
    mult = new PVector(0,0);
    w = new PVector(width, height);
@@ -40,7 +40,7 @@ class Co {
   //  position.add(wind);
     noStroke();
     fill(255);
-  //circle(position.x, position.y, 3);
+ // circle(position.x, position.y, 2);
     
   }
   
@@ -75,7 +75,7 @@ class Co {
     noiz4 = noise(position.x * .005);
     
     position.add(noiz, noiz2);
-    //position.add(wind);
+   // position.add(wind);
     position.sub(noiz3, noiz4);
   }
   
