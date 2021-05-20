@@ -17,7 +17,7 @@ class Co {
   }
   
   void update() {
-     //edge();
+     edge();
     run();
     //wid();
     nois();
@@ -42,7 +42,7 @@ class Co {
     noStroke();
     fill(255);
    //circle(100,100,100);
-  circle(position.x, position.y, 2);
+  circle(position.x, position.y, 3);
     
   }
   
@@ -69,17 +69,18 @@ class Co {
   
   void nois() {
     x += .00001;
-   // println(x);
-    noiz = noise((position.y * .001)+200);
+    println(x);
+    noiz = noise((position.y * .005)+200);
     noiz2 = noise((position.x * .005)+100 );
-     //noiz2z = noise(position.z * .001);
-    noiz3 = noise(position.y * .005);
-    // noiz3 = noise(position.z * .005);
+     noiz2z = noise(position.y * x);
+    noiz3 = noise(position.y * .0005);
+     noiz3z = noise(position.x * x);
     noiz4 = noise(position.x * .001);
     
     position.add(noiz, noiz2);
-   // position.add(wind);
-    position.sub(noiz3, noiz4);
+   position.add(noiz3, noiz4);
+   position.sub(0.001, .001);
+    position.sub(noiz2z, noiz3z);
   }
   
   void edge() {

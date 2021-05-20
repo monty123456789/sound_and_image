@@ -33,6 +33,9 @@ void draw() {
   //spotLight(255, 0, 0, 0, 0, 400, 0, 0, -1, PI, 0);
   background(0);
   ax+= 1;
+  if (ax > 4) {
+    exit();
+  }
   println(ax);
 
    //extracting objects from arrayList, and adding them to the draw loop so they update. 
@@ -67,7 +70,7 @@ void draw() {
    // println(d);
    // float c = map(d, 0, 1000, 0, 255);
    // stroke(c);
-  saveFrame("grid1_####.jpg");
+  saveFrame("grid1_#####.jpg");
 }
 
 
