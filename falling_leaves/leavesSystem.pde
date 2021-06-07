@@ -2,18 +2,22 @@ class LeavesSystem {
   ArrayList<Leaves> leavesN;
   PVector origin, h, w, m;
    color c;
+   int test = 0;
    
   LeavesSystem(float x, float y) {
    leavesN = new ArrayList<Leaves>();
    origin = new PVector(x,y);
    h = new PVector(0, height);
-   w = new PVector(0, 0);
+   w = new PVector(random(-1, 1), 0);
    m = new PVector(width/2, height/2);
   }
 
 
   void addLeaves() {
-    leavesN.add(new Leaves());
+    test += 1;
+    if (test % 10 == 0) {
+    leavesN.add(new Leaves(random(.1, .5), noise(10*.01), noise((2)*.01)));
+  }
   }
   
   // void force(PVector f) {
@@ -23,13 +27,7 @@ class LeavesSystem {
   //}
   
   void edgeForce() {
-    //float he = position.dist(h);
-    //he = he/100;
-    //float we = position.dist(h);
-    //we = we/100;
-    //position.add(we, he);
-    //println(he + 'h');
-    //println(we + 'w');
+
       
   }
 
@@ -37,24 +35,19 @@ class LeavesSystem {
     
     for (int i = leavesN.size()-1; i >= 0; i--) {
       Leaves n = leavesN.get(i);
-      float he = n.position.dist(h);
-      he = he/900; 
-      float we = n.position.dist(w);
-      we = we/5000;
-      float mi = n.position.dist(m);
-      mi /= 700;
-      //n.position.add(0,we);
-      n.position.add(0, -he); 
-      //n.position.add(mi, -mi);
-      
-      
-      
-     // fill();
-      
-      n.update();
+      //n.position.add(w);
+      n.edge();
+      n.update(random(-.05, .05), noise(n.position.y * .01)/50, noise(n.position.x * .01)/50);
       n.display();
-     //n.edgeForce();
-      //n.edges();
+      
+      
+    if (n.position.y >= height - 10) {
+      n.gravity.set(0,0);
+      n.nos.set(0,0);
+      n.gusts.set(0,0);
+      //w.set(0,0);
+    }
+    
       if (n.isDead()) {
         leavesN.remove(i);
       }

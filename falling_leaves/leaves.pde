@@ -1,5 +1,5 @@
 class Leaves {
-  PVector gravity, velocity, wind, gusts, position, h, lif;
+  PVector gravity, velocity, wind, gusts, position, h, lif, nos;
   float life;
   int edge = 2;
   float x;
@@ -8,40 +8,46 @@ class Leaves {
   float offset;
   float noiseVal;
   float noiseScale = .02;
+  float co;
 
-  Leaves() {
+  Leaves(float a, float b, float c) {
+    //seed = random(-1.5, 1.5);
 
-
-    float r = random(-50, 50);
-    position = new PVector(r, -10);
+    float r = random(-150, 300);
+    position = new PVector(r, -20);
     velocity = new PVector(0, 0); 
-    gravity = new PVector(0, .70);
-    wind = new PVector(0, 0);
-    gusts = new PVector(0, seed);
-    lif = new PVector(life/800, 0);
-   
-
-    life = 800;
-    seed = random(.5, 1.5);
-  }
-
-
-  //void run() {
-  //  update();
-  //  display();
-
-  //  //edges();
-  //}
-
-
-  void update() {
-    x += .0001;
-    //noiseDetail(1,.9);
-    float noiz = noise( (position.y)*.01);
-    float noiz2 = noise((position.x)*.01);
+    gravity = new PVector(0, .5);
+    wind = new PVector(seed, 0);
     
-    position.add(noiz, noiz2).add(gravity).add(wind).add(seed, 0).add(lif);
-    //position.sub(0, position.y);
+    
+   
+    gusts = new PVector(a, 0);
+    nos = new PVector(b, c);
+     co = random(255);
+
+    life = 1000;
+    
+   
+  }
+  
+ 
+
+
+  void update(float r, float t, float u) {
+    //float noiz = noise((position.y)*.01);
+    //float noiz2 = noise((position.x)*.01);
+    
+    gusts.add(r, 0);
+    gusts.add(t, 0);
+    gusts.sub(u, 0);
+    x += .0001;
+    velocity.add(gusts).add(nos).add(gravity).add(wind);
+    
+    
+    position.add(velocity);
+      velocity.mult(0);
+    //position.add(nos).add(gravity).add(gusts);
+    
     
     life -= 1;
     x += .005;
@@ -62,30 +68,20 @@ class Leaves {
 
   void display() {
    
-  // pushMatrix();
-  // fill(255);
-  // ellipse(width/2, height/2, 100, 70);
-  //  fill(0);
-  // circle(width/2, height/2, 60);
-  //fill(255, 0, 0);
-  // circle(width/2, height/2, 20);
+   pushMatrix();
+   translate(position.x, position.y);
+     rotate(nos.x);
+   ellipse(0, 0, 15, 7);
+   rect(-10, 0, 5, 1);
+  // rect(100, 100, 200, 100, 0, 100, 0, 100);
+
+   popMatrix();
    
-  // popMatrix();
    
-   //pushMatrix();
-   //fill(255);
-   // ellipse(position.x, position.y, 15, 11);
-   // fill(0);
-   //circle(position.x, position.y, 10);
-   //fill(255, 0, 0);
-   float c = map(life, 0, 700, 0, 255);
-   fill(c);
+  // float c = map(life, 0, 700, 0, 255);
+   fill(0,co,0);
    noStroke();
-   //fill(255, 255, 0);
-   circle(position.x, position.y, 10);
-   //popMatrix();
-    //noStroke();
-    //fill(life);
+ 
   }
 
 
@@ -95,6 +91,15 @@ class Leaves {
     } else {
       return false;
     }
+  }
+  
+  void edge() {
+    
+    //if (position.y >= height - 10) {
+    //  gravity.set(0,0);
+    //  nos.set(0,0);
+    //  gusts.set(0,0);
+    //}
   }
   
  

@@ -4,20 +4,24 @@ ArrayList<Co> cos = new ArrayList<Co>();
  ArrayList<Co> cos2 = new ArrayList<Co>();
 //IntList ex, ey;
 int ax;
+float ex = .0001;
 float x, y,x2, y2;
 PShape s;
 float ad = 20;
+int rand;
 void setup() {
   size(1440, 1080);
  //s = (1,0);
   //shap = new PVector(0, 0);
   //ex = new IntList();
   //ey = new IntList();
-
+  
   //for vertex/circles i = 0, for lines i = 10
-  for (int i = 0; i< width; i+=1) {
+  for (int i = 0 ; i< width; i+=1) {
     //ex.append(i);
-    for (int j = 0; j < height; j+=10) {
+    
+    for (int j = 0; j < height ; j+=15) {
+      rand = int(random(0, 10));
       //creating new circle objects with coordinates of i and j, adding these objects to array list. 
       cos.add(new Co(i, j));
      // cos.add(new Co(j, i));
@@ -33,10 +37,12 @@ void draw() {
   //spotLight(255, 0, 0, 0, 0, 400, 0, 0, -1, PI, 0);
   background(0);
   ax+= 1;
-  if (ax > 4) {
+   ex += .0001;
+  if (ax > 40000) {
     exit();
   }
-  println(ax);
+  println(ax + "number    ");
+  println(ex + "x     ");
 
    //extracting objects from arrayList, and adding them to the draw loop so they update. 
   for (int i = cos.size()-1; i > 0; i--) {
@@ -49,6 +55,8 @@ void draw() {
     
     m.update();
     n.update();
+    m.nois(ex);
+    n.nois(ex);
     
      x = m.position.x;
      y = m.position.y;
