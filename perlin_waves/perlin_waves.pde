@@ -7,8 +7,8 @@ float t= 20;
 void setup() {
   size(600,400, P3D);
   b = new ArrayList<Ball>();
-  for(int i = 0; i< width; i+=2) {
-    for(int j = 0; j < height; j +=2) {
+  for(int i = 0; i< width; i+=1) {
+    for(int j = 0; j < height; j +=1) {
       for(int k= 0; k < 2; k++) { 
          b.add(new Ball(i, j, k));
        //b2.add(new Ball(j, ));
@@ -24,7 +24,7 @@ void draw() {
    //yellow
    //directionalLight(255, 215, 0, .7, .7, .5);
    //blkue
-   directionalLight(0, 0, 255, .7, -.2, -1);
+   directionalLight(0, 0,255, .7, -.2, -.5);
       
 
   //ortho(-width/2, width/2, -height/2, height/2);
@@ -49,5 +49,5 @@ void draw() {
     //be.stripes();
     
   }
-  saveFrame("perlin_waves_5_1_######.jpg");
+  saveFrame("perlin_waves_7_1_######.jpg");
 }

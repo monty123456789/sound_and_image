@@ -3,7 +3,7 @@ class Ball {
   PVector acceleration, acceleration2, velocity, location, gravity;
   float x, seed, m;
   float c1, c2, c3, co1, co2, co3;
-  float ex, y, z;
+  float ex, y, z, zA;
   
   Ball(float a, float b, float c) {
     y = b;
@@ -23,6 +23,7 @@ class Ball {
     float n = noise(location.x * .01 ) ;
     float n2 = noise(location.y * .005  ) ;
     float n3 = noise(location.z * .01 +x);
+    zA = n3;
    
     c3 = map(n3, 0, 1, 0, 255);
     
@@ -47,7 +48,7 @@ class Ball {
     acceleration = new PVector(n2, n3, n);
     velocity.add(acceleration);
     location.add(velocity);
-    velocity.limit(.4);
+    velocity.limit(.2 + zA/5);
     
   }
   
@@ -78,7 +79,7 @@ class Ball {
     pushMatrix();
     translate(location.x, location.y, location.z);
   
-    sphere(2);
+    sphere(1);
     popMatrix();
   }
   
