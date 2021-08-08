@@ -7,9 +7,9 @@ float t= 20;
 void setup() {
   size(600,400, P3D);
   b = new ArrayList<Ball>();
-  for(int i = 0; i< width; i+=10) {
-    for(int j = 0; j < height; j +=10) {
-      for(int k= 0; k < 1; k++) { 
+  for(int i = 0; i< width; i+=1) {
+    for(int j = 0; j < height; j +=1) {
+      for(int k= 0; k < 2; k++) { 
          b.add(new Ball(i, j, k));
        //b2.add(new Ball(j, ));
       
@@ -22,7 +22,7 @@ void draw() {
   camera(width/2, height/1.2, (height/4) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
   //spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
    //yellow
-   //directionalLight(255, 215, 0, .7, .7, .5);
+   directionalLight(255, 215, 0, .9, .7, -.3);
    //blkue
    directionalLight(0, 0,255, .7, -.2, -.5);
       

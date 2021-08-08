@@ -23,10 +23,12 @@ class Ball {
     float n = noise(location.x * .01 ) ;
     float n2 = noise(location.y * .005  ) ;
     float n3 = noise(location.z * .01 );
-    zA = n3;
-     if (zA < .5) {
-      zA = map(zA, 0, .5, 1, .5);
-    }
+    zA = n;
+    // if (zA < .5) {
+    //  zA = map(zA, 0, .5, .4, .1);
+    //} else if (zA > .5) {
+    //  zA = map(zA, .5, 1, .
+    zA = map(zA, 0, 1, 0.2, .4);
     
    
     c3 = map(n3, 0, 1, 0, 255);
@@ -52,7 +54,11 @@ class Ball {
     acceleration = new PVector(n2, n3, n);
     velocity.add(acceleration);
     location.add(velocity);
-    velocity.limit(zA/2);
+    
+    //OPTION1
+    velocity.limit(zA);
+    //OPTION2
+    //velocity.limit(.4);
     
   }
   
@@ -83,7 +89,7 @@ class Ball {
     pushMatrix();
     translate(location.x, location.y, location.z);
   
-    sphere(1);
+    sphere(2);
     popMatrix();
   }
   
