@@ -20,9 +20,9 @@ class Ball {
   
   void move() {
     x+= .001;
-    float n = noise(location.x * .01 + x) ;
+    float n = noise(location.x * .01 ) ;
     float n2 = noise(location.y * .005  ) ;
-    float n3 = noise(location.z * .01);
+    float n3 = noise(location.z * .01 +x);
    
     c3 = map(n3, 0, 1, 0, 255);
     
@@ -70,7 +70,7 @@ class Ball {
   
   void display3d() {
     //fill((co1 + co2)/2);
-    float c = map(location.z, -20, 15, 30, 255);
+    float c = map(location.z, -20, 15, 90, 255);
     fill(c);
     
   //  fill(255, 100);

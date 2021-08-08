@@ -24,13 +24,13 @@ void draw() {
    //yellow
    //directionalLight(255, 215, 0, .7, .7, .5);
    //blkue
-   directionalLight(255, 0, 0, .7, -.2, -1);
+   directionalLight(0, 0, 255, .7, -.2, -1);
       
 
   //ortho(-width/2, width/2, -height/2, height/2);
  // lights();
-  scale(1.2);
-  translate(-50,-140);
+  scale(1.3);
+  translate(-60,-150);
   //translate(width/1.5, height/1.5);
  // spotLight(0, 255, 255, 0, 100, 350, 50, 0, 0, PI, .7);
   test+=1;
