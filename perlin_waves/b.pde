@@ -22,8 +22,12 @@ class Ball {
     x+= .001;
     float n = noise(location.x * .01 ) ;
     float n2 = noise(location.y * .005  ) ;
-    float n3 = noise(location.z * .01 +x);
+    float n3 = noise(location.z * .01 );
     zA = n3;
+     if (zA < .5) {
+      zA = map(zA, 0, .5, 1, .5);
+    }
+    
    
     c3 = map(n3, 0, 1, 0, 255);
     
@@ -48,7 +52,7 @@ class Ball {
     acceleration = new PVector(n2, n3, n);
     velocity.add(acceleration);
     location.add(velocity);
-    velocity.limit(.2 + zA/5);
+    velocity.limit(zA/2);
     
   }
   
@@ -71,7 +75,7 @@ class Ball {
   
   void display3d() {
     //fill((co1 + co2)/2);
-    float c = map(location.z, -20, 15, 90, 255);
+    float c = map(location.z, -20, 15, 190, 255);
     fill(c);
     
   //  fill(255, 100);

@@ -7,9 +7,9 @@ float t= 20;
 void setup() {
   size(600,400, P3D);
   b = new ArrayList<Ball>();
-  for(int i = 0; i< width; i+=1) {
-    for(int j = 0; j < height; j +=1) {
-      for(int k= 0; k < 2; k++) { 
+  for(int i = 0; i< width; i+=10) {
+    for(int j = 0; j < height; j +=10) {
+      for(int k= 0; k < 1; k++) { 
          b.add(new Ball(i, j, k));
        //b2.add(new Ball(j, ));
       
