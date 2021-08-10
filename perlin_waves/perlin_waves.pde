@@ -2,29 +2,31 @@ ArrayList<Ball> b;
 ArrayList<Ball>b2;
 int test = 1;
 int a1, a2;
-float t= 20;
+float t= 40;
+float x;
 
 void setup() {
   size(600,400, P3D);
   b = new ArrayList<Ball>();
   for(int i = 0; i< width; i+=1) {
     for(int j = 0; j < height; j +=1) {
-      for(int k= 0; k < 2; k++) { 
-         b.add(new Ball(i, j, k));
+    //  for(int k= 0; k < 2; k++) { 
+         b.add(new Ball(i, j));
        //b2.add(new Ball(j, ));
       
-    }
+    
     }
   }
 }
 
 void draw() {
+  x+= .001;
   camera(width/2, height/1.2, (height/4) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
   //spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
    //yellow
-   directionalLight(255, 215, 0, .9, .7, -.3);
+   directionalLight(255, 215, .5, .9, .7, -.3);
    //blkue
-   directionalLight(0, 0,255, .7, -.2, -.5);
+   directionalLight(0, 0,255, -.7, -.2, -.5);
       
 
   //ortho(-width/2, width/2, -height/2, height/2);
@@ -39,7 +41,7 @@ void draw() {
 //  t += .05;
   for( int i = b.size()-1; i> 0; i--) {
     Ball be = b.get(i);
-    be.move();
+    be.move(x);
    // be.display();
     be.display3d();
     

@@ -1,28 +1,28 @@
 class Ball {
   
   PVector acceleration, acceleration2, velocity, location, gravity;
-  float x, seed, m;
+  float seed, m;
   float c1, c2, c3, co1, co2, co3;
   float ex, y, z, zA;
   
-  Ball(float a, float b, float c) {
+  Ball(float a, float b) {
     y = b;
     acceleration = new PVector();
     gravity = new PVector(0, 0.15);
     acceleration2 = new PVector();
     velocity = new PVector();
-    location = new PVector(a, b, c);
+    location = new PVector(a, b);
     seed = random(1000);
     c1 = a;
     c2 = b;
     c3 = b;
   }
   
-  void move() {
-    x+= .001;
-    float n = noise(location.x * .01 ) ;
-    float n2 = noise(location.y * .005  ) ;
-    float n3 = noise(location.z * .01 );
+  void move(float x) {
+    
+    float n = noise(location.x * .01 +x) ;
+    float n2 = noise(location.y * .005  +x) ;
+    float n3 = noise(location.z * .01 +x);
     zA = n;
     // if (zA < .5) {
     //  zA = map(zA, 0, .5, .4, .1);
@@ -51,12 +51,12 @@ class Ball {
     //float n4 = noise(location.y * x*100) + x ;
     //acceleration2 = new PVector(n3, n2);
     
-    acceleration = new PVector(n2, n3, n);
+    acceleration = new PVector(n3, n, n2);
     velocity.add(acceleration);
     location.add(velocity);
     
     //OPTION1
-    velocity.limit(zA);
+    velocity.limit(.4);
     //OPTION2
     //velocity.limit(.4);
     
